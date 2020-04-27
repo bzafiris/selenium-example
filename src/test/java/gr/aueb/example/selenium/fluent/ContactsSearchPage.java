@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 public class ContactsSearchPage {
 
 	/**
@@ -27,6 +28,7 @@ public class ContactsSearchPage {
 	}
 
 	public ContactsSearchPage waitToLoad() {
+		
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(new Function<WebDriver, Boolean>() {
 
