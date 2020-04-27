@@ -6,5 +6,5 @@
 Παρέχει API σε διάφορες γλώσσες προγραμματισμού για τον χειρισμό του browser (π.χ. chrome, firefox) σε διάφορες πλατφόρμες (desktop, mobile).
 
 Στα παραδείγματα που περιλαμβάνονται στον κατάλογο `src/test/java`, το σύστημα υπό έλεγχο είναι η μηχανή αναζήτησης επαφών του Οικονομικού Πανεπιστημίου Αθηνών.
-Παρέχεται, επίσης, υλοποίηση των περιπτώσεων ελέγχου ακολουθώντας το [Page Object](https://martinfowler.com/bliki/PageObject.html) πρότυπο σχεδίασης.
+Παρέχεται, επίσης, υλοποίηση των περιπτώσεων ελέγχου ακολουθώντας το [Page Object](https://www.selenium.dev/documentation/en/guidelines_and_recommendations/page_object_models/) πρότυπο σχεδίασης.
  

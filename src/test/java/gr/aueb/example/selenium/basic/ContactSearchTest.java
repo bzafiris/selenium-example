@@ -25,18 +25,18 @@ public class ContactSearchTest {
 
 	@BeforeClass
 	public static void setupClass() {
+		// Select appropriate webdriver implementation based on the OS
 		if (SystemUtils.IS_OS_LINUX) {
 			System.setProperty("webdriver.gecko.driver", "./geckodriver/geckodriver-v0.26.0-linux64");
 		} else if (SystemUtils.IS_OS_WINDOWS) {
 			System.setProperty("webdriver.gecko.driver", "./geckodriver/geckodriver-v0.26.0-win64.exe");
 		}
-
 		driver = new FirefoxDriver();
 	}
 
 	@AfterClass
 	public static void tearDownClass() {
-		driver.close();
+		driver.quit();
 	}
 
 	@Before
