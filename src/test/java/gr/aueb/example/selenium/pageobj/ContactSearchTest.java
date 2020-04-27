@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import gr.aueb.example.selenium.util.Wait;
+import gr.aueb.example.selenium.util.SeleniumUtils;
 
 /**
  * The basic test rewritten using the Page Object design pattern.
@@ -50,7 +50,7 @@ public class ContactSearchTest {
 		String surname = "ronaldo";
 		
 		contactSeachPage.searchFaculty(surname);
-		Wait.forTimeout(3);
+		SeleniumUtils.waitForTimeout(3);
 		contactSeachPage.assertNoResults();
 				
 	}
@@ -61,7 +61,7 @@ public class ContactSearchTest {
 		String surname = "ζαφειρης";
 
 		contactSeachPage.searchFaculty(surname);
-		Wait.forTimeout(3);
+		SeleniumUtils.waitForTimeout(3);
 		contactSeachPage.assertResultsVisible("ΖΑΦΕΙΡΗΣ ΒΑΣΙΛΕΙΟΣ");
 		
 	}

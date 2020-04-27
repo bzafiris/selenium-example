@@ -17,7 +17,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import gr.aueb.example.selenium.util.Wait;
+import gr.aueb.example.selenium.util.SeleniumUtils;
 
 public class ContactSearchTest {
 
@@ -77,7 +77,7 @@ public class ContactSearchTest {
 		WebElement searchButton = driver.findElement(By.id("edit-submit-contactsopa"));
 		searchButton.click();
 
-		Wait.forTimeout(3);
+		SeleniumUtils.waitForTimeout(3);
 
 		// assert results
 		WebElement resultsTable = driver.findElement(By.cssSelector("table.views-table.cols-0"));
