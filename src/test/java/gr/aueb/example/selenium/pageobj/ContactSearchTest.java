@@ -1,12 +1,10 @@
 package gr.aueb.example.selenium.pageobj;
 
-import org.apache.commons.lang3.SystemUtils;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import gr.aueb.example.selenium.util.SeleniumUtils;
 
@@ -23,18 +21,12 @@ public class ContactSearchTest {
 
 	@BeforeClass
 	public static void setupClass() {
-		if (SystemUtils.IS_OS_LINUX) {
-			System.setProperty("webdriver.gecko.driver", "./geckodriver/geckodriver-linux64");
-		} else if (SystemUtils.IS_OS_WINDOWS) {
-			System.setProperty("webdriver.gecko.driver", "./geckodriver/geckodriver-win64.exe");
-		}
-
-		driver = new FirefoxDriver();
+		driver = SeleniumUtils.getWebDriver();
 	}
 
 	@AfterClass
 	public static void tearDownClass() {
-		driver.close();
+		driver.quit();
 	}
 	
 	@Before

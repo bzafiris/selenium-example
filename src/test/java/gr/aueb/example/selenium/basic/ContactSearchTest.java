@@ -4,7 +4,6 @@ import static org.junit.Assert.fail;
 
 import java.util.function.Function;
 
-import org.apache.commons.lang3.SystemUtils;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,7 +13,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import gr.aueb.example.selenium.util.SeleniumUtils;
@@ -25,13 +23,7 @@ public class ContactSearchTest {
 
 	@BeforeClass
 	public static void setupClass() {
-		// Select appropriate webdriver implementation based on the OS
-		if (SystemUtils.IS_OS_LINUX) {
-			System.setProperty("webdriver.gecko.driver", "./geckodriver/geckodriver-v0.26.0-linux64");
-		} else if (SystemUtils.IS_OS_WINDOWS) {
-			System.setProperty("webdriver.gecko.driver", "./geckodriver/geckodriver-v0.26.0-win64.exe");
-		}
-		driver = new FirefoxDriver();
+		driver = SeleniumUtils.getWebDriver();
 	}
 
 	@AfterClass

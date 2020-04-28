@@ -25,7 +25,7 @@ public class ContactsSearchPage {
 		super();
 		this.driver = driver;
 	}
-
+	
 	public void waitToLoad() {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(new Function<WebDriver, Boolean>() {

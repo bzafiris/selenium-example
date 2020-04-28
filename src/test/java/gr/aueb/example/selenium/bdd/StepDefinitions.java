@@ -31,23 +31,21 @@ public class StepDefinitions {
 	
 	
 	@Δεδομένου("ο χρήστης ανοίγει τη σελίδα αναζήτησης επαφών")
-	public void ο_χρήστης_ανοίγει_τη_σελίδα_αναζήτησης_επαφών() {
+	public void user_navigates_to_contacts_search_page() {
 		driver.get("https://www.aueb.gr/el/contactsopa");
 		searchPage = new ContactsSearchPage(driver);
 		searchPage.waitToLoad();  
 	}
 
-	@Όταν("ο χρήστης εκτελεί αναζήτηση με όρο Ζαφείρης")
-	public void ο_χρήστης_εισάγει_όρο_αναζήτησης_Ζαφείρης() {
-		String surname = "ζαφειρης";
-		searchPage.searchFaculty(surname);
+	@Όταν("ο χρήστης εκτελεί αναζήτηση με όρο {string}")
+	public void user_searches_with_term(String searchTerm) {
+		searchPage.searchFaculty(searchTerm);
 		SeleniumUtils.waitForTimeout(3);
-		searchPage.assertResultsVisible("ΖΑΦΕΙΡΗΣ ΒΑΣΙΛΕΙΟΣ");
 	}
 
-	@Τότε("εμφανίζεται αποτέλεσμα με ονοματεπώνυμο ΖΑΦΕΙΡΗΣ ΒΑΣΙΛΕΙΟΣ")
-	public void εμφανίζεται_αποτέλεσμα_με_ονοματεπώνυμο_ΖΑΦΕΙΡΗΣ_ΒΑΣΙΛΕΙΟΣ() {
-		searchPage.assertResultsVisible("ΖΑΦΕΙΡΗΣ ΒΑΣΙΛΕΙΟΣ");
+	@Τότε("εμφανίζεται αποτέλεσμα με ονοματεπώνυμο {string}")
+	public void assert_results_for_fullname(String fullname) {
+		searchPage.assertResultsVisible(fullname);
 	}
 	
 }

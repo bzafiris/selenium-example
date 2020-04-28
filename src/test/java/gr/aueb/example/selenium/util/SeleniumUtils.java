@@ -21,9 +21,9 @@ public class SeleniumUtils {
 	public static WebDriver getWebDriver() {
 		// Select appropriate webdriver implementation based on the OS
 		if (SystemUtils.IS_OS_LINUX) {
-			System.setProperty("webdriver.gecko.driver", "./geckodriver/geckodriver-v0.26.0-linux64");
+			System.setProperty("webdriver.gecko.driver", "geckodriver/geckodriver-v0.26.0-linux64");
 		} else if (SystemUtils.IS_OS_WINDOWS) {
-			System.setProperty("webdriver.gecko.driver", "./geckodriver/geckodriver-v0.26.0-win64.exe");
+			System.setProperty("webdriver.gecko.driver", "geckodriver/geckodriver-v0.26.0-win64.exe");
 		}
 		return new FirefoxDriver();
 	}
