@@ -38,6 +38,7 @@ public class ContactSearchTest {
 		waitPageLoad();
 	}
 
+	
 	@Test
 	public void searchNonExistingContactBySurname() {
 

@@ -6,7 +6,9 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(plugin = {"pretty", "html:target/cucumber"}, monochrome = true)
+@CucumberOptions(plugin = {"pretty", "html:target/cucumber"},
+  monochrome = true)
 public class RunCucumberTest {
 	
 }
+

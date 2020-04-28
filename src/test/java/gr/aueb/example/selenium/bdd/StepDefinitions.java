@@ -1,10 +1,6 @@
 package gr.aueb.example.selenium.bdd;
 
-import java.util.function.Function;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import gr.aueb.example.selenium.fluent.ContactsSearchPage;
 import gr.aueb.example.selenium.util.SeleniumUtils;
@@ -18,17 +14,6 @@ public class StepDefinitions {
 	
 	WebDriver driver;
 	ContactsSearchPage searchPage;
-	
-	@Before
-	public void setup() {
-		driver = SeleniumUtils.getWebDriver();
-	}
-	
-	@After
-	public void tearDown() {
-		driver.quit();
-	}
-	
 	
 	@Δεδομένου("ο χρήστης ανοίγει τη σελίδα αναζήτησης επαφών")
 	public void user_navigates_to_contacts_search_page() {
@@ -56,6 +41,16 @@ public class StepDefinitions {
 	@Τότε("δεν εμφανίζεται κανένα αποτέλεσμα")
 	public void assert_no_search_results() {
 		searchPage.assertNoResults();
+	}
+	
+	@Before
+	public void setup() {
+		driver = SeleniumUtils.getWebDriver();
+	}
+	
+	@After
+	public void tearDown() {
+		driver.quit();
 	}
 	
 }
