@@ -4,6 +4,7 @@ import static org.junit.Assert.fail;
 
 import java.util.function.Function;
 
+import org.apache.commons.lang3.SystemUtils;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,6 +14,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -38,6 +40,35 @@ public class ContactSearchTest {
 		waitPageLoad();
 	}
 
+	private void slides_snippet() {
+		
+		// Εισαγωγή στο path του geckodriver για αλληλεπίδραση με τον firefox
+		if (SystemUtils.IS_OS_LINUX) { 
+			System.setProperty("webdriver.gecko.driver", "geckodriver/geckodriver-v0.26.0-linux64");
+		} else if (SystemUtils.IS_OS_WINDOWS) {
+			System.setProperty("webdriver.gecko.driver", "geckodriver/geckodriver-v0.26.0-win64.exe");
+		}
+		// δημιουργία WebDriver
+		WebDriver driver = new FirefoxDriver();
+		// αναζήτηση πεδίου κειμένου για εισαγωγή όρων αναζήτησης
+		WebElement searchBox = driver.findElement(By.id("edit-title-field-value"));
+		searchBox.sendKeys("μαλεύρης");
+
+		// αναζήτηση κουμπιού υποβολής αναζήτησης
+		WebElement searchButton = driver.findElement(By.id("edit-submit-contactsopa"));
+		searchButton.click(); // κλικ στο κουμπί
+
+		// assertions
+		// εντοπισμός πίνακα αποτελεσμάτων
+		WebElement resultsTable = driver.findElement(By.cssSelector("table.views-table.cols-0"));
+		
+		// αναζήτηση στη σελίδα link με κείμενο "ΜΑΛΕΥΡΗΣ ΝΙΚΟΛΑΟΣ"
+		WebElement result = driver.findElement(By.linkText("ΜΑΛΕΥΡΗΣ ΝΙΚΟΛΑΟΣ"));
+		
+		// Σε περίπτωση μη εντοπισμού των στοιχείων προκύπτει NoSuchElementException
+		// και το test αποτυγχάνει
+		
+	}
 	
 	@Test
 	public void searchNonExistingContactBySurname() {
