@@ -37,15 +37,25 @@ public class StepDefinitions {
 		searchPage.waitToLoad();  
 	}
 
-	@Όταν("ο χρήστης εκτελεί αναζήτηση με όρο {string}")
+	@Όταν("εκτελεί αναζήτηση με όρο {string}")
 	public void user_searches_with_term(String searchTerm) {
 		searchPage.searchFaculty(searchTerm);
 		SeleniumUtils.waitForTimeout(3);
+	}
+	
+	@Όταν("επιλέγει αναζήτηση στο τμήμα {string}")
+	public void user_selects_department(String departmentName) {
+		searchPage.selectDepartment(departmentName);
 	}
 
 	@Τότε("εμφανίζεται αποτέλεσμα με ονοματεπώνυμο {string}")
 	public void assert_results_for_fullname(String fullname) {
 		searchPage.assertResultsVisible(fullname);
+	}
+	
+	@Τότε("δεν εμφανίζεται κανένα αποτέλεσμα")
+	public void assert_no_search_results() {
+		searchPage.assertNoResults();
 	}
 	
 }

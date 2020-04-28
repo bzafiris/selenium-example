@@ -4,8 +4,10 @@ import java.util.function.Function;
 
 import org.apache.commons.lang3.SystemUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SeleniumUtils {
@@ -25,7 +27,9 @@ public class SeleniumUtils {
 		} else if (SystemUtils.IS_OS_WINDOWS) {
 			System.setProperty("webdriver.gecko.driver", "geckodriver/geckodriver-v0.26.0-win64.exe");
 		}
-		return new FirefoxDriver();
+		FirefoxOptions options = new FirefoxOptions();
+		options.setPageLoadStrategy(PageLoadStrategy.EAGER);
+		return new FirefoxDriver(options);
 	}
 
 	public static void forAuebHomePage(WebDriver driver) {

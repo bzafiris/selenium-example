@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
@@ -83,6 +84,16 @@ public class ContactsSearchPage {
 			
 		}
 		return this;
+	}
+
+	public ContactsSearchPage selectDepartment(String departmentName) {
+		
+		WebElement selectElement = driver.findElement(By.id("edit-tid-1"));
+		Select selectObject = new Select(selectElement);
+		selectObject.selectByVisibleText(departmentName);
+		
+		return this;
+		
 	}
 
 }
