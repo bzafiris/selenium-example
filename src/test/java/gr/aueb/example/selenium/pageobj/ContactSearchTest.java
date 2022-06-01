@@ -39,7 +39,7 @@ public class ContactSearchTest {
 	@Test
 	public void searchNonExistingContactBySurname() {
 		
-		String surname = "ronaldo";
+		String surname = "Παπαδημητρίου";
 		
 		contactSeachPage.searchFaculty(surname);
 		SeleniumUtils.waitForTimeout(3);

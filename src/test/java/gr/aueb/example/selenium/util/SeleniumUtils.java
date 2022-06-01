@@ -1,5 +1,6 @@
 package gr.aueb.example.selenium.util;
 
+import java.time.Duration;
 import java.util.function.Function;
 
 import org.apache.commons.lang3.SystemUtils;
@@ -23,9 +24,9 @@ public class SeleniumUtils {
 	public static WebDriver getWebDriver() {
 		// Select appropriate webdriver implementation based on the OS
 		if (SystemUtils.IS_OS_LINUX) {
-			System.setProperty("webdriver.gecko.driver", "geckodriver/geckodriver-v0.26.0-linux64");
+			System.setProperty("webdriver.gecko.driver", "geckodriver/geckodriver-v0.31.0-linux64");
 		} else if (SystemUtils.IS_OS_WINDOWS) {
-			System.setProperty("webdriver.gecko.driver", "geckodriver/geckodriver-v0.26.0-win64.exe");
+			System.setProperty("webdriver.gecko.driver", "geckodriver/geckodriver-v0.31.0-win64.exe");
 		}
 		FirefoxOptions options = new FirefoxOptions();
 		options.setPageLoadStrategy(PageLoadStrategy.EAGER);
@@ -35,7 +36,7 @@ public class SeleniumUtils {
 	public static void forAuebHomePage(WebDriver driver) {
 
 		// Τα νεα του Πανεπιστημιου
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(new Function<WebDriver, Boolean>() {
 
 			public Boolean apply(WebDriver driver) {

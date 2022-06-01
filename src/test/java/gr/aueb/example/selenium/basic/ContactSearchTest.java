@@ -1,7 +1,10 @@
 package gr.aueb.example.selenium.basic;
 
 import static org.junit.Assert.fail;
+import gr.aueb.example.selenium.util.SeleniumUtils;
 
+import java.time.Duration;
+import java.time.temporal.TemporalUnit;
 import java.util.function.Function;
 
 import org.apache.commons.lang3.SystemUtils;
@@ -15,10 +18,9 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import gr.aueb.example.selenium.util.SeleniumUtils;
 
 public class ContactSearchTest {
 
@@ -40,13 +42,14 @@ public class ContactSearchTest {
 		waitPageLoad();
 	}
 
+	/*
 	private void slides_snippet() {
 		
 		// Εισαγωγή στο path του geckodriver για αλληλεπίδραση με τον firefox
 		if (SystemUtils.IS_OS_LINUX) { 
-			System.setProperty("webdriver.gecko.driver", "geckodriver/geckodriver-v0.26.0-linux64");
+			System.setProperty("webdriver.gecko.driver", "geckodriver/geckodriver-v0.31.0-linux64");
 		} else if (SystemUtils.IS_OS_WINDOWS) {
-			System.setProperty("webdriver.gecko.driver", "geckodriver/geckodriver-v0.26.0-win64.exe");
+			System.setProperty("webdriver.gecko.driver", "geckodriver/geckodriver-v0.31.0-win64.exe");
 		}
 		// δημιουργία WebDriver
 		WebDriver driver = new FirefoxDriver();
@@ -70,17 +73,24 @@ public class ContactSearchTest {
 		
 	}
 	
+	*/
 	@Test
 	public void searchNonExistingContactBySurname() {
 
-		String surname = "ronaldo";
+		String surname = "Παπαδημητρίου";
 
 		WebElement searchBox = driver.findElement(By.id("edit-title-field-value"));
 		searchBox.clear();
 		searchBox.sendKeys(surname);
+		
+		SeleniumUtils.waitForTimeout(3);
 
 		WebElement searchButton = driver.findElement(By.id("edit-submit-contactsopa"));
-		searchButton.click();
+		//searchButton.click();
+		new Actions(driver).moveToElement(searchButton).click().perform();
+		
+		
+		SeleniumUtils.waitForTimeout(3);
 
 		try {
 			WebElement result = driver.findElement(By.id(".views-table.cols-0"));
@@ -98,11 +108,12 @@ public class ContactSearchTest {
 		WebElement searchBox = driver.findElement(By.id("edit-title-field-value"));
 		searchBox.clear();
 		searchBox.sendKeys(surname);
+		
 
 		WebElement searchButton = driver.findElement(By.id("edit-submit-contactsopa"));
-		searchButton.click();
-
-		SeleniumUtils.waitForTimeout(3);
+		new Actions(driver).moveToElement(searchButton).click().perform();
+		
+		SeleniumUtils.waitForTimeout(5);
 
 		// assert results
 		WebElement resultsTable = driver.findElement(By.cssSelector("table.views-table.cols-0"));
@@ -110,6 +121,8 @@ public class ContactSearchTest {
 
 		WebElement result = driver.findElement(By.linkText("ΖΑΦΕΙΡΗΣ ΒΑΣΙΛΕΙΟΣ"));
 		Assert.assertTrue(result.isDisplayed());
+		
+		SeleniumUtils.waitForTimeout(5);
 
 	}
 	
@@ -122,14 +135,16 @@ public class ContactSearchTest {
 		Select selectObject = new Select(selectElement);
 		selectObject.selectByVisibleText("Τμήμα Πληροφορικής");
 		
+		SeleniumUtils.waitForTimeout(3);
+		
 		WebElement searchBox = driver.findElement(By.id("edit-title-field-value"));
 		searchBox.clear();
 		searchBox.sendKeys(surname);
-
+		
 		WebElement searchButton = driver.findElement(By.id("edit-submit-contactsopa"));
-		searchButton.click();
-
-		SeleniumUtils.waitForTimeout(3);
+		new Actions(driver).moveToElement(searchButton).click().perform();
+		
+		SeleniumUtils.waitForTimeout(5);
 
 		// assert results
 		WebElement resultsTable = driver.findElement(By.cssSelector("table.views-table.cols-0"));
@@ -137,10 +152,13 @@ public class ContactSearchTest {
 
 		WebElement result = driver.findElement(By.linkText("ΖΑΦΕΙΡΗΣ ΒΑΣΙΛΕΙΟΣ"));
 		Assert.assertTrue(result.isDisplayed());
+		
+		SeleniumUtils.waitForTimeout(5);
 	}
+	
 
 	private void waitPageLoad() {
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(new Function<WebDriver, Boolean>() {
 
 			public Boolean apply(WebDriver driver) {

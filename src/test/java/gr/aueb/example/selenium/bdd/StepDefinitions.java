@@ -25,7 +25,7 @@ public class StepDefinitions {
 	@Όταν("εκτελεί αναζήτηση με όρο {string}")
 	public void user_searches_with_term(String searchTerm) {
 		searchPage.searchFaculty(searchTerm);
-		SeleniumUtils.waitForTimeout(3);
+		SeleniumUtils.waitForTimeout(5);
 	}
 	
 	@Όταν("επιλέγει αναζήτηση στο τμήμα {string}")

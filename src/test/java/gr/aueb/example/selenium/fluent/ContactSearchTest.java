@@ -42,7 +42,7 @@ public class ContactSearchTest {
 	@Test
 	public void searchNonExistingContactBySurname() {
 		
-		String surname = "ronaldo";
+		String surname = "Παπαδημητρίουσ";
 		
 		contactSeachPage
 			.searchFaculty(surname)
