@@ -86,8 +86,8 @@ public class ContactSearchTest {
 		SeleniumUtils.waitForTimeout(3);
 
 		WebElement searchButton = driver.findElement(By.id("edit-submit-contactsopa"));
-		//searchButton.click();
-		new Actions(driver).moveToElement(searchButton).click().perform();
+		searchButton.click();
+		//new Actions(driver).moveToElement(searchButton).click().perform();
 		
 		
 		SeleniumUtils.waitForTimeout(3);
@@ -111,7 +111,7 @@ public class ContactSearchTest {
 		
 
 		WebElement searchButton = driver.findElement(By.id("edit-submit-contactsopa"));
-		new Actions(driver).moveToElement(searchButton).click().perform();
+		searchButton.click();
 		
 		SeleniumUtils.waitForTimeout(5);
 
@@ -142,7 +142,7 @@ public class ContactSearchTest {
 		searchBox.sendKeys(surname);
 		
 		WebElement searchButton = driver.findElement(By.id("edit-submit-contactsopa"));
-		new Actions(driver).moveToElement(searchButton).click().perform();
+		searchButton.click();
 		
 		SeleniumUtils.waitForTimeout(5);
 

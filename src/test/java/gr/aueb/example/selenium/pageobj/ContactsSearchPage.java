@@ -50,7 +50,7 @@ public class ContactsSearchPage {
 		searchBox.sendKeys(surname);
 
 		WebElement searchButton = driver.findElement(By.id(EDIT_SUBMIT_CONTACTSOPA));
-		new Actions(driver).moveToElement(searchButton).click().perform();
+		searchButton.click();
 		
 	}
 
