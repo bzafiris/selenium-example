@@ -1,6 +1,6 @@
-# Βασική χρήση του Selenium Framework
+# Χρήση εργαλείων για ελέγχους συστήματος
 
-Περιλαμβάνονται μικρά παραδείγματα χρήσης του [Selenium Framework](https://www.selenium.dev).
+Περιλαμβάνονται μικρά παραδείγματα χρήσης του [Selenium Framework](https://www.selenium.dev) και της πλατφόρμας [Cucumber](https://cucumber.io/) για Behaviour Driven Development.
 
 Το Selenium χρησιμοποιείται ευρύτατα για την υλοποίηση αυτοματοποιημένων ελέγχων για web ή mobile εφαρμογές.
 Παρέχει API σε διάφορες γλώσσες προγραμματισμού για τον χειρισμό του browser (π.χ. chrome, firefox) σε διάφορες πλατφόρμες (desktop, mobile).
