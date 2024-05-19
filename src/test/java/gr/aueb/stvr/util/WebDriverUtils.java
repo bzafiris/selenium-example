@@ -19,9 +19,9 @@ public class WebDriverUtils {
 	public static WebDriver getWebDriver() {
 		// Select appropriate webdriver implementation based on the OS
 		if (SystemUtils.IS_OS_LINUX) {
-			System.setProperty("webdriver.gecko.driver", "geckodriver/geckodriver-v0.31.0-linux64");
+			System.setProperty("webdriver.gecko.driver", "geckodriver/geckodriver");
 		} else if (SystemUtils.IS_OS_WINDOWS) {
-			System.setProperty("webdriver.gecko.driver", "geckodriver/geckodriver-v0.31.0-win64.exe");
+			System.setProperty("webdriver.gecko.driver", "geckodriver/geckodriver.exe");
 		}
 		FirefoxOptions options = new FirefoxOptions();
 		options.setPageLoadStrategy(PageLoadStrategy.EAGER);
