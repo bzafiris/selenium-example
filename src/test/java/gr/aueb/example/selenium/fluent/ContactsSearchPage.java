@@ -1,18 +1,17 @@
 package gr.aueb.example.selenium.fluent;
 
-import static org.junit.Assert.fail;
-
-import java.time.Duration;
-import java.util.function.Function;
-
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.function.Function;
+
+import static org.junit.jupiter.api.Assertions.fail;
 
 
 public class ContactsSearchPage {
@@ -69,10 +68,10 @@ public class ContactsSearchPage {
 
 	public ContactsSearchPage assertResultsVisible(String surname) {
 		WebElement resultsTable = driver.findElement(By.cssSelector(TABLE_VIEWS_TABLE_COLS_0));
-		Assert.assertTrue(resultsTable.isDisplayed());
+		Assertions.assertTrue(resultsTable.isDisplayed());
 
 		WebElement result = driver.findElement(By.linkText(surname));
-		Assert.assertTrue(result.isDisplayed());
+		Assertions.assertTrue(result.isDisplayed());
 		
 		return this;
 	}

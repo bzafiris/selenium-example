@@ -1,12 +1,11 @@
 package gr.aueb.example.selenium.pageobj;
 
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import gr.aueb.example.util.SeleniumUtils;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-
-import gr.aueb.example.selenium.util.SeleniumUtils;
 
 /**
  * The basic test rewritten using the Page Object design pattern.
@@ -19,17 +18,17 @@ public class ContactSearchTest {
 	private static WebDriver driver;
 	private ContactsSearchPage contactSeachPage;
 
-	@BeforeClass
+	@BeforeAll
 	public static void setupClass() {
 		driver = SeleniumUtils.getWebDriver();
 	}
 
-	@AfterClass
+	@AfterAll
 	public static void tearDownClass() {
 		driver.quit();
 	}
 	
-	@Before
+	@BeforeEach
 	public void setup() {
 		driver.get("https://www.aueb.gr/el/contactsopa");
 		contactSeachPage = new ContactsSearchPage(driver);

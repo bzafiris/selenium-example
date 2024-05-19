@@ -1,45 +1,40 @@
 package gr.aueb.example.selenium.basic;
 
-import static org.junit.Assert.fail;
-import gr.aueb.example.selenium.util.SeleniumUtils;
-
-import java.time.Duration;
-import java.time.temporal.TemporalUnit;
-import java.util.function.Function;
-
-import org.apache.commons.lang3.SystemUtils;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import gr.aueb.example.util.SeleniumUtils;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.function.Function;
+
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class ContactSearchTest {
 
 	private static WebDriver driver;
 
-	@BeforeClass
+	private ContactsSearchPage searchPage;
+
+	@BeforeAll
 	public static void setupClass() {
 		driver = SeleniumUtils.getWebDriver();
 	}
 
-	@AfterClass
+	@AfterAll
 	public static void tearDownClass() {
 		driver.quit();
 	}
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		driver.get("https://www.aueb.gr/el/contactsopa");
 		waitPageLoad();
+		searchPage = new ContactsSearchPage(driver);
 	}
 
 	/*
@@ -79,25 +74,9 @@ public class ContactSearchTest {
 
 		String surname = "Παπαδημητρίου";
 
-		WebElement searchBox = driver.findElement(By.id("edit-title-field-value"));
-		searchBox.clear();
-		searchBox.sendKeys(surname);
-		
+		searchPage.searchFaculty(surname);
 		SeleniumUtils.waitForTimeout(3);
-
-		WebElement searchButton = driver.findElement(By.id("edit-submit-contactsopa"));
-		searchButton.click();
-		//new Actions(driver).moveToElement(searchButton).click().perform();
-		
-		
-		SeleniumUtils.waitForTimeout(3);
-
-		try {
-			WebElement result = driver.findElement(By.id(".views-table.cols-0"));
-			fail(); // fail if results table is found
-		} catch (NoSuchElementException e) {
-
-		}
+		searchPage.assertNoVisibleFaculty();
 
 	}
 
@@ -105,9 +84,7 @@ public class ContactSearchTest {
 	public void searchExistingContactBySurname() {
 		String surname = "ζαφειρης";
 
-		WebElement searchBox = driver.findElement(By.id("edit-title-field-value"));
-		searchBox.clear();
-		searchBox.sendKeys(surname);
+		searchFaculty(surname);
 		
 
 		WebElement searchButton = driver.findElement(By.id("edit-submit-contactsopa"));
@@ -117,15 +94,48 @@ public class ContactSearchTest {
 
 		// assert results
 		WebElement resultsTable = driver.findElement(By.cssSelector("table.views-table.cols-0"));
-		Assert.assertTrue(resultsTable.isDisplayed());
+		Assertions.assertTrue(resultsTable.isDisplayed());
 
 		WebElement result = driver.findElement(By.linkText("ΖΑΦΕΙΡΗΣ ΒΑΣΙΛΕΙΟΣ"));
-		Assert.assertTrue(result.isDisplayed());
+		Assertions.assertTrue(result.isDisplayed());
 		
 		SeleniumUtils.waitForTimeout(5);
 
 	}
-	
+
+	private void searchFaculty(String surname) {
+		WebElement searchBox = driver.findElement(By.id("edit-title-field-value"));
+		searchBox.clear();
+		searchBox.sendKeys(surname);
+
+		WebElement searchButton = driver.findElement(By.id("edit-submit-contactsopa"));
+		searchButton.click();
+	}
+
+	private void assertResultsVisible(String surname) {
+		WebElement resultsTable = driver.findElement(By.cssSelector("table.views-table.cols-0"));
+		Assertions.assertTrue(resultsTable.isDisplayed());
+
+		WebElement result = driver.findElement(By.linkText(surname));
+		Assertions.assertTrue(result.isDisplayed());
+
+	}
+
+	public void assertVisibleFaculty(String visibleSurname) {
+		WebElement resultsTable = driver.findElement(By.cssSelector("table.views-table.cols-0"));
+		Assertions.assertTrue(resultsTable.isDisplayed());
+		WebElement result = driver.findElement(By.linkText(visibleSurname));
+		Assertions.assertTrue(result.isDisplayed());
+	}
+	public void assertNoVisibleFaculty() {
+		try {
+			WebElement result = driver.findElement(By.id(".views-table.cols-0"));
+			fail(); // fail if results table is found
+		} catch (NoSuchElementException e) {
+
+		}
+	}
+
 	@Test
 	public void searchContactWithinDepartment() {
 		String surname = "ζαφειρης";
@@ -137,24 +147,22 @@ public class ContactSearchTest {
 		
 		SeleniumUtils.waitForTimeout(3);
 		
-		WebElement searchBox = driver.findElement(By.id("edit-title-field-value"));
-		searchBox.clear();
-		searchBox.sendKeys(surname);
+		searchFaculty(surname);
 		
 		WebElement searchButton = driver.findElement(By.id("edit-submit-contactsopa"));
 		searchButton.click();
 		
 		SeleniumUtils.waitForTimeout(5);
 
+		
+		String visibleSurname = "ΖΑΦΕΙΡΗΣ ΒΑΣΙΛΕΙΟΣ";
 		// assert results
-		WebElement resultsTable = driver.findElement(By.cssSelector("table.views-table.cols-0"));
-		Assert.assertTrue(resultsTable.isDisplayed());
-
-		WebElement result = driver.findElement(By.linkText("ΖΑΦΕΙΡΗΣ ΒΑΣΙΛΕΙΟΣ"));
-		Assert.assertTrue(result.isDisplayed());
+		assertVisibleFaculty(visibleSurname);
 		
 		SeleniumUtils.waitForTimeout(5);
 	}
+
+
 	
 
 	private void waitPageLoad() {

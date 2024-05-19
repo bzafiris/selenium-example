@@ -1,18 +1,18 @@
-package gr.aueb.example.selenium.bdd;
+package gr.aueb.example.bdd;
 
+import io.cucumber.java.AfterAll;
+import io.cucumber.java.BeforeAll;
 import org.openqa.selenium.WebDriver;
 
 import gr.aueb.example.selenium.fluent.ContactsSearchPage;
-import gr.aueb.example.selenium.util.SeleniumUtils;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+import gr.aueb.example.util.SeleniumUtils;
 import io.cucumber.java.el.Όταν;
 import io.cucumber.java.el.Δεδομένου;
 import io.cucumber.java.el.Τότε;
 
 public class StepDefinitions {
 	
-	WebDriver driver;
+	static WebDriver driver;
 	ContactsSearchPage searchPage;
 	
 	@Δεδομένου("ο χρήστης ανοίγει τη σελίδα αναζήτησης επαφών")
@@ -43,13 +43,13 @@ public class StepDefinitions {
 		searchPage.assertNoResults();
 	}
 	
-	@Before
-	public void setup() {
+	@BeforeAll
+	public static void setup() {
 		driver = SeleniumUtils.getWebDriver();
 	}
 	
-	@After
-	public void tearDown() {
+	@AfterAll
+	public static void tearDown() {
 		driver.quit();
 	}
 	
