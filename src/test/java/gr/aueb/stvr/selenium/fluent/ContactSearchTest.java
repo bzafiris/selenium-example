@@ -1,6 +1,6 @@
-package gr.aueb.example.selenium.fluent;
+package gr.aueb.stvr.selenium.fluent;
 
-import gr.aueb.example.util.SeleniumUtils;
+import gr.aueb.stvr.util.SeleniumUtils;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;

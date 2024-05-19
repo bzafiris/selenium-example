@@ -1,11 +1,11 @@
-package gr.aueb.example.bdd;
+package gr.aueb.stvr.bdd;
 
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
 import org.openqa.selenium.WebDriver;
 
-import gr.aueb.example.selenium.fluent.ContactsSearchPage;
-import gr.aueb.example.util.SeleniumUtils;
+import gr.aueb.stvr.selenium.fluent.ContactsSearchPage;
+import gr.aueb.stvr.util.SeleniumUtils;
 import io.cucumber.java.el.Όταν;
 import io.cucumber.java.el.Δεδομένου;
 import io.cucumber.java.el.Τότε;

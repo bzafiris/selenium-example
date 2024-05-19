@@ -1,6 +1,6 @@
-package gr.aueb.example.selenium.basic;
+package gr.aueb.stvr.selenium.basic;
 
-import gr.aueb.example.util.SeleniumUtils;
+import gr.aueb.stvr.util.SeleniumUtils;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;

@@ -1,4 +1,4 @@
-package gr.aueb.example.bdd;
+package gr.aueb.stvr.bdd;
 
 import org.junit.platform.suite.api.ConfigurationParameter;
 import org.junit.platform.suite.api.IncludeEngines;

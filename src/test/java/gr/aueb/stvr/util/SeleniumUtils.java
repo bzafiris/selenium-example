@@ -1,4 +1,4 @@
-package gr.aueb.example.util;
+package gr.aueb.stvr.util;
 
 import java.time.Duration;
 import java.util.function.Function;
