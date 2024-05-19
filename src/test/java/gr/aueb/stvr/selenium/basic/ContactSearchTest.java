@@ -96,7 +96,7 @@ public class ContactSearchTest {
 		WebElement resultsTable = driver.findElement(By.cssSelector("table.views-table.cols-0"));
 		Assertions.assertTrue(resultsTable.isDisplayed());
 
-		WebElement result = driver.findElement(By.linkText("ΖΑΦΕΙΡΗΣ ΒΑΣΙΛΕΙΟΣ"));
+		WebElement result = driver.findElement(By.linkText("Ζαφείρης Βασίλειος"));
 		Assertions.assertTrue(result.isDisplayed());
 		
 		WebDriverUtils.waitForTimeout(5);
@@ -143,7 +143,7 @@ public class ContactSearchTest {
 		WebElement selectElement = driver.findElement(By.id("edit-tid-1"));
 		selectElement.click();
 		Select selectObject = new Select(selectElement);
-		selectObject.selectByVisibleText("Τμήμα Πληροφορικής");
+		selectObject.selectByVisibleText("--Τμήμα Πληροφορικής");
 		
 		WebDriverUtils.waitForTimeout(3);
 		
@@ -155,7 +155,7 @@ public class ContactSearchTest {
 		WebDriverUtils.waitForTimeout(5);
 
 		
-		String visibleSurname = "ΖΑΦΕΙΡΗΣ ΒΑΣΙΛΕΙΟΣ";
+		String visibleSurname = "Ζαφείρης Βασίλειος";
 		// assert results
 		assertVisibleFaculty(visibleSurname);
 		

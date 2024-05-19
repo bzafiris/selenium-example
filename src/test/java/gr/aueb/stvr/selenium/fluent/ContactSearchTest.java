@@ -58,7 +58,7 @@ public class ContactSearchTest {
 		contactSeachPage
 			.searchFaculty(surname)
 			.waitTimeout(3)
-			.assertResultsVisible("ΖΑΦΕΙΡΗΣ ΒΑΣΙΛΕΙΟΣ");
+			.assertResultsVisible("Ζαφείρης Βασίλειος");
 		
 	}
 

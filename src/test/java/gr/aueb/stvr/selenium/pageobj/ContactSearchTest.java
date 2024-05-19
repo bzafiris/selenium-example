@@ -53,7 +53,7 @@ public class ContactSearchTest {
 
 		contactSeachPage.searchFaculty(surname);
 		WebDriverUtils.waitForTimeout(3);
-		contactSeachPage.assertResultsVisible("ΖΑΦΕΙΡΗΣ ΒΑΣΙΛΕΙΟΣ");
+		contactSeachPage.assertResultsVisible("Ζαφείρης Βασίλειος");
 		
 	}
 
