@@ -1,6 +1,6 @@
 package gr.aueb.stvr.selenium.basic;
 
-import gr.aueb.stvr.util.SeleniumUtils;
+import gr.aueb.stvr.util.WebDriverUtils;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -26,7 +26,7 @@ public class ContactsSearchPage {
 		WebElement searchButton = driver.findElement(By.id("edit-submit-contactsopa"));
 		searchButton.click();
 		//new Actions(driver).moveToElement(searchButton).click().perform();
-		SeleniumUtils.waitForTimeout(3);
+		WebDriverUtils.waitForTimeout(3);
 	}
 
 	public void assertVisibleFaculty(String visibleSurname) {

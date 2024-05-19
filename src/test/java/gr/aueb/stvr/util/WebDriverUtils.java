@@ -1,17 +1,12 @@
 package gr.aueb.stvr.util;
 
-import java.time.Duration;
-import java.util.function.Function;
-
 import org.apache.commons.lang3.SystemUtils;
-import org.openqa.selenium.By;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SeleniumUtils {
+public class WebDriverUtils {
 
 	public static void waitForTimeout(int seconds) {
 		try {
@@ -31,26 +26,6 @@ public class SeleniumUtils {
 		FirefoxOptions options = new FirefoxOptions();
 		options.setPageLoadStrategy(PageLoadStrategy.EAGER);
 		return new FirefoxDriver(options);
-	}
-
-	public static void forAuebHomePage(WebDriver driver) {
-
-		// Τα νεα του Πανεπιστημιου
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(new Function<WebDriver, Boolean>() {
-
-			public Boolean apply(WebDriver driver) {
-				// TODO Auto-generated method stub
-				try {
-					driver.findElement(By.id("content0_main"));
-				} catch (Exception e) {
-					return false;
-				}
-				return true;
-			}
-
-		});
-
 	}
 
 }

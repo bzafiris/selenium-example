@@ -1,6 +1,6 @@
 package gr.aueb.stvr.selenium.pageobj;
 
-import gr.aueb.stvr.util.SeleniumUtils;
+import gr.aueb.stvr.util.WebDriverUtils;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +20,7 @@ public class ContactSearchTest {
 
 	@BeforeAll
 	public static void setupClass() {
-		driver = SeleniumUtils.getWebDriver();
+		driver = WebDriverUtils.getWebDriver();
 	}
 
 	@AfterAll
@@ -41,7 +41,7 @@ public class ContactSearchTest {
 		String surname = "Παπαδημητρίου";
 		
 		contactSeachPage.searchFaculty(surname);
-		SeleniumUtils.waitForTimeout(3);
+		WebDriverUtils.waitForTimeout(3);
 		contactSeachPage.assertNoResults();
 				
 	}
@@ -52,7 +52,7 @@ public class ContactSearchTest {
 		String surname = "ζαφειρης";
 
 		contactSeachPage.searchFaculty(surname);
-		SeleniumUtils.waitForTimeout(3);
+		WebDriverUtils.waitForTimeout(3);
 		contactSeachPage.assertResultsVisible("ΖΑΦΕΙΡΗΣ ΒΑΣΙΛΕΙΟΣ");
 		
 	}

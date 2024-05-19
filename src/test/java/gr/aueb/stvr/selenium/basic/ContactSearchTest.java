@@ -1,6 +1,6 @@
 package gr.aueb.stvr.selenium.basic;
 
-import gr.aueb.stvr.util.SeleniumUtils;
+import gr.aueb.stvr.util.WebDriverUtils;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -22,7 +22,7 @@ public class ContactSearchTest {
 
 	@BeforeAll
 	public static void setupClass() {
-		driver = SeleniumUtils.getWebDriver();
+		driver = WebDriverUtils.getWebDriver();
 	}
 
 	@AfterAll
@@ -75,7 +75,7 @@ public class ContactSearchTest {
 		String surname = "Παπαδημητρίου";
 
 		searchPage.searchFaculty(surname);
-		SeleniumUtils.waitForTimeout(3);
+		WebDriverUtils.waitForTimeout(3);
 		searchPage.assertNoVisibleFaculty();
 
 	}
@@ -90,7 +90,7 @@ public class ContactSearchTest {
 		WebElement searchButton = driver.findElement(By.id("edit-submit-contactsopa"));
 		searchButton.click();
 		
-		SeleniumUtils.waitForTimeout(5);
+		WebDriverUtils.waitForTimeout(5);
 
 		// assert results
 		WebElement resultsTable = driver.findElement(By.cssSelector("table.views-table.cols-0"));
@@ -99,7 +99,7 @@ public class ContactSearchTest {
 		WebElement result = driver.findElement(By.linkText("ΖΑΦΕΙΡΗΣ ΒΑΣΙΛΕΙΟΣ"));
 		Assertions.assertTrue(result.isDisplayed());
 		
-		SeleniumUtils.waitForTimeout(5);
+		WebDriverUtils.waitForTimeout(5);
 
 	}
 
@@ -145,21 +145,21 @@ public class ContactSearchTest {
 		Select selectObject = new Select(selectElement);
 		selectObject.selectByVisibleText("Τμήμα Πληροφορικής");
 		
-		SeleniumUtils.waitForTimeout(3);
+		WebDriverUtils.waitForTimeout(3);
 		
 		searchFaculty(surname);
 		
 		WebElement searchButton = driver.findElement(By.id("edit-submit-contactsopa"));
 		searchButton.click();
 		
-		SeleniumUtils.waitForTimeout(5);
+		WebDriverUtils.waitForTimeout(5);
 
 		
 		String visibleSurname = "ΖΑΦΕΙΡΗΣ ΒΑΣΙΛΕΙΟΣ";
 		// assert results
 		assertVisibleFaculty(visibleSurname);
 		
-		SeleniumUtils.waitForTimeout(5);
+		WebDriverUtils.waitForTimeout(5);
 	}
 
 

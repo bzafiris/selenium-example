@@ -5,7 +5,7 @@ import io.cucumber.java.BeforeAll;
 import org.openqa.selenium.WebDriver;
 
 import gr.aueb.stvr.selenium.fluent.ContactsSearchPage;
-import gr.aueb.stvr.util.SeleniumUtils;
+import gr.aueb.stvr.util.WebDriverUtils;
 import io.cucumber.java.el.Όταν;
 import io.cucumber.java.el.Δεδομένου;
 import io.cucumber.java.el.Τότε;
@@ -25,7 +25,7 @@ public class StepDefinitions {
 	@Όταν("εκτελεί αναζήτηση με όρο {string}")
 	public void user_searches_with_term(String searchTerm) {
 		searchPage.searchFaculty(searchTerm);
-		SeleniumUtils.waitForTimeout(5);
+		WebDriverUtils.waitForTimeout(5);
 	}
 	
 	@Όταν("επιλέγει αναζήτηση στο τμήμα {string}")
@@ -45,7 +45,7 @@ public class StepDefinitions {
 	
 	@BeforeAll
 	public static void setup() {
-		driver = SeleniumUtils.getWebDriver();
+		driver = WebDriverUtils.getWebDriver();
 	}
 	
 	@AfterAll

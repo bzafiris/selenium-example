@@ -1,6 +1,6 @@
 package gr.aueb.stvr.selenium.fluent;
 
-import gr.aueb.stvr.util.SeleniumUtils;
+import gr.aueb.stvr.util.WebDriverUtils;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +23,7 @@ public class ContactSearchTest {
 
 	@BeforeAll
 	public static void setupClass() {
-		driver = SeleniumUtils.getWebDriver();
+		driver = WebDriverUtils.getWebDriver();
 	}
 
 	@AfterAll
